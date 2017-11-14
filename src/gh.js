@@ -1,6 +1,5 @@
 const accesToken = process.env.REACT_APP_GH_TOKEN;
 const concurrency = 20;
-const maxPage = 2;
 const axios = require('axios');
 const moment = require('moment');
 const gh = axios.create({
@@ -58,7 +57,7 @@ const data = {
     let page = 0;
     let hasMoreIssues = true;
 
-    while (hasMoreIssues === true && page < maxPage) {
+    while (hasMoreIssues === true) {
       page++;
       const { headers, data: issuesForCurrentPage } = await getIssuesForPage(
         page
@@ -93,7 +92,7 @@ const data = {
       issues
         .filter(issue => issue.upvotes > 0)
         .map(this._formatIssue)
-        .sort((issueA, issueB) => issueA.upvotes < issueB.upvotes)
+        .sort((issueA, issueB) => issueB.upvotes - issueA.upvotes)
     );
   },
 };
