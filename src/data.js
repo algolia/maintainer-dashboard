@@ -28,7 +28,7 @@ module.exports = {
             link: `https://github.com/algolia/instantsearch.js/issues/${
               issue.number
             }`,
-            days: moment(issue.updated_at).fromNow(),
+            days: moment().diff(moment(issue.updated_at), 'days'),
           }))
       ),
 };
