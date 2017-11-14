@@ -5,6 +5,8 @@
   "dependencies": {
     "axios": "0.17.1",
     "moment": "2.19.2",
+    "p-map": "1.2.0",
+    "parse-link-header": "1.0.1",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-scripts": "1.0.17"

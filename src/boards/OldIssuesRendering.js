@@ -6,13 +6,13 @@ export default function({ data }) {
   return <ul className="dashboard-lines">{data.map(renderElement)}</ul>;
 }
 
-function renderElement({ title, number, link, days }) {
+function renderElement({ title, number, link, daysSinceLastUpdate }) {
   let howOld;
   switch (true) {
-    case days < 5:
+    case daysSinceLastUpdate < 5:
       howOld = 'fresh';
       break;
-    case days < 30:
+    case daysSinceLastUpdate < 30:
       howOld = 'aged';
       break;
     default:
@@ -26,7 +26,7 @@ function renderElement({ title, number, link, days }) {
       <a href={link} className="title">
         {title}
       </a>
-      <span className={badgeCssClass}>{days}</span>
+      <span className={badgeCssClass}>{daysSinceLastUpdate}</span>
     </li>
   );
 }
