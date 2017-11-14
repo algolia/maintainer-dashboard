@@ -1,5 +1,5 @@
 module.exports = {
-  extends: 'algolia',
+  extends: ['algolia', 'algolia/react'],
   rules: {
     'import/no-commonjs': 'off'
   }

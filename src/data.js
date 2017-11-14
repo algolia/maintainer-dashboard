@@ -25,7 +25,7 @@ module.exports = {
           .map(issue => ({
             title: issue.title,
             number: issue.number,
-            link: `https://github.com/algolia/instantsearch.js/issue/${
+            link: `https://github.com/algolia/instantsearch.js/issues/${
               issue.number
             }`,
             days: moment(issue.updated_at).fromNow(),
