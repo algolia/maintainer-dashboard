@@ -10,19 +10,19 @@ function getOldIssues() {
       title: 'Need some help, please',
       number: '123',
       link: 'https://github.com/algolia/instantsearch.js/issues/1260',
-      days: 120,
+      daysSinceLastUpdate: 120,
     },
     {
       title: 'Need some more help, please',
       number: '124',
       link: 'https://github.com/algolia/instantsearch.js/issues/1260',
-      days: 20,
+      daysSinceLastUpdate: 20,
     },
     {
       title: 'Need some help, again',
       number: '123',
       link: 'https://github.com/algolia/instantsearch.js/issues/1260',
-      days: 1,
+      daysSinceLastUpdate: 1,
     },
   ]);
 }
