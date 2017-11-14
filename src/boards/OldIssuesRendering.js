@@ -6,11 +6,11 @@ export default function({ data }) {
   return <ul className="dashboard-lines">{data.map(renderElement)}</ul>;
 }
 
-function renderElement({ title, number, link, daysSinceLastUpdate }) {
+function renderElement({ title, number, link, daysSinceCreation }) {
   let flagColor;
-  if (daysSinceLastUpdate < 5) {
+  if (daysSinceCreation < 5) {
     flagColor = 'cool';
-  } else if (daysSinceLastUpdate < 30) {
+  } else if (daysSinceCreation < 30) {
     flagColor = 'be-careful';
   } else {
     flagColor = 'danger';
@@ -23,7 +23,7 @@ function renderElement({ title, number, link, daysSinceLastUpdate }) {
       <a href={link} className="title">
         {title}
       </a>
-      <span className={badgeCssClass}>{daysSinceLastUpdate}</span>
+      <span className={badgeCssClass}>{daysSinceCreation}</span>
     </li>
   );
 }

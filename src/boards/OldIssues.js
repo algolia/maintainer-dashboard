@@ -10,19 +10,19 @@ import gh from '../gh.js';
 //       title: 'Need some help, please',
 //       number: '123',
 //       link: 'https://github.com/algolia/instantsearch.js/issues/1260',
-//       daysSinceLastUpdate: 120,
+//       daysSinceCreation: 120,
 //     },
 //     {
 //       title: 'Need some more help, please',
 //       number: '124',
 //       link: 'https://github.com/algolia/instantsearch.js/issues/1260',
-//       daysSinceLastUpdate: 20,
+//       daysSinceCreation: 20,
 //     },
 //     {
 //       title: 'Need some help, again',
 //       number: '123',
 //       link: 'https://github.com/algolia/instantsearch.js/issues/1260',
-//       daysSinceLastUpdate: 1,
+//       daysSinceCreation: 1,
 //     },
 //   ]);
 // }
