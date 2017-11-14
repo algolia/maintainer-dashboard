@@ -50,7 +50,7 @@ export default class MostLoved extends Component {
     );
     return (
       <div className="dashboard-board">
-        <div className="dashboard-header">Oldest issues</div>
+        <div className="dashboard-header">Most requested issues</div>
         {content}
       </div>
     );

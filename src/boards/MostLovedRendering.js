@@ -30,7 +30,9 @@ function RenderMostLovedElement({ title, number, link, hearts }) {
   return (
     <li className="dashboard-line" key={title}>
       <span>{number}</span>
-      <a href={link}>{title}</a>
+      <a href={link} className="title">
+        {title}
+      </a>
       <span className={badgeCssClass}>{passionContent}</span>
     </li>
   );

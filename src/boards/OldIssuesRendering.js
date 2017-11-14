@@ -23,7 +23,9 @@ function renderElement({ title, number, link, days }) {
   return (
     <li className="dashboard-line" key={title}>
       <span>{number}</span>
-      <a href={link}>{title}</a>
+      <a href={link} className="title">
+        {title}
+      </a>
       <span className={badgeCssClass}>{days}</span>
     </li>
   );

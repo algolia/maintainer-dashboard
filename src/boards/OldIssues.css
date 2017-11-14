@@ -1,9 +1,10 @@
 .last-updated {
   display: inline-flex;
   background: gray;
-  margin: 3px;
   border-radius: 3px;
   padding: 2px;
+  width: 40px;
+  text-align: center;
 }
 
 .last-updated.fresh {
@@ -11,6 +12,7 @@
 }
 .last-updated.aged {
   background: yellow;
+  color: black;
 }
 .last-updated.rotten {
   background: red;

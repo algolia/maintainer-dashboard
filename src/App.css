@@ -31,11 +31,27 @@
 .dashboard-board {
   align-self: flex-start;
   height: 500px;
-  min-width: 500px;
+  width: 100%;
+  max-width: calc(33vw - 62px);
   text-align: left;
   border: 1px solid white;
   margin: 20px;
 }
+
+@media (max-width: 1200px) {
+  .dashboard-board {
+    max-width: calc(50vw - 42px);
+    margin: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-board {
+    max-width: calc(100vw - 22px);
+    margin: 20px;
+  }
+}
+
 
 .dashboard-header {
    display: flex;
@@ -62,4 +78,9 @@
 
 .dashboard-line > * {
   align-self: center;
+}
+
+.dashboard-line > .title {
+  flex-grow: 1;
+  margin: 0 10px;
 }

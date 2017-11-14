@@ -3,7 +3,29 @@ import React, { Component } from 'react';
 import Rendering from './OldIssuesRendering.js';
 import Spinner from '../commons/Spinner.js';
 
-import { getOldIssues } from '../data.js';
+// import { getOldIssues } from '../data.js';
+function getOldIssues() {
+  return Promise.resolve([
+    {
+      title: 'Need some help, please',
+      number: '123',
+      link: 'https://github.com/algolia/instantsearch.js/issues/1260',
+      days: 120,
+    },
+    {
+      title: 'Need some more help, please',
+      number: '124',
+      link: 'https://github.com/algolia/instantsearch.js/issues/1260',
+      days: 20,
+    },
+    {
+      title: 'Need some help, again',
+      number: '123',
+      link: 'https://github.com/algolia/instantsearch.js/issues/1260',
+      days: 1,
+    },
+  ]);
+}
 
 export default class OldIssues extends Component {
   constructor(props) {
