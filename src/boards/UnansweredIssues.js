@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Rendering from './UnansweredIssuesRendering.js';
 import Spinner from '../commons/Spinner.js';
+import Header from './Header.js';
 
 // import gh from '../gh.js';
 function getLastAnswered() {
@@ -48,7 +49,7 @@ export default class UnansweredIssues extends Component {
     );
     return (
       <div className="dashboard-board">
-        <div className="dashboard-header">Unanswered user messages</div>
+        <Header title="Unanswered user messages" />
         {content}
       </div>
     );

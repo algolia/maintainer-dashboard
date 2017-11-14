@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Rendering from './MostLovedRendering.js';
 import Spinner from '../commons/Spinner.js';
+import Header from './Header.js';
 
 import gh from '../gh.js';
 // function getLovedIssues() {
@@ -50,7 +51,7 @@ export default class MostLoved extends Component {
     );
     return (
       <div className="dashboard-board">
-        <div className="dashboard-header">Most requested issues</div>
+        <Header title="Most requested issues" />
         {content}
       </div>
     );

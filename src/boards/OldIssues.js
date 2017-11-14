@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Rendering from './OldIssuesRendering.js';
 import Spinner from '../commons/Spinner.js';
+import Header from './Header.js';
 
 import gh from '../gh.js';
 // function getOldIssues() {
@@ -50,7 +51,7 @@ export default class OldIssues extends Component {
     );
     return (
       <div className="dashboard-board">
-        <div className="dashboard-header">Oldest issues</div>
+        <Header title="Oldest issues" />
         {content}
       </div>
     );
