@@ -31,7 +31,25 @@
   align-self: flex-start;
   height: 500px;
   min-width: 500px;
-  text-align: center;
+  text-align: left;
   border: 1px solid white;
   margin: 20px;
+  overflow: scroll;
+}
+
+.dashboard-line {
+  display: flex;
+  line-height: 150%;
+}
+
+.dashboard-line > * {
+  align-self: center;
+}
+
+.last-updated {
+  display: inline-flex;
+  background: gray;
+  margin: 3px;
+  border-radius: 3px;
+  padding: 2px;
 }
