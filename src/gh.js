@@ -1,4 +1,4 @@
-const accesToken = '5380b27beecc83d24a775e62847468b3cfe59543';
+const accesToken = process.env.REACT_APP_GH_TOKEN;
 const concurrency = 20;
 const maxPage = 2;
 const axios = require('axios');
@@ -12,7 +12,7 @@ const gh = axios.create({
 const parseLinkHeader = require('parse-link-header');
 const pMap = require('p-map');
 
-module.exports = {
+const data = {
   _formatIssue(issue) {
     return {
       title: issue.title,
@@ -97,3 +97,5 @@ module.exports = {
     );
   },
 };
+
+export default data;

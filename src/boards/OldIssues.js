@@ -3,29 +3,29 @@ import React, { Component } from 'react';
 import Rendering from './OldIssuesRendering.js';
 import Spinner from '../commons/Spinner.js';
 
-// import { getOldIssues } from '../data.js';
-function getOldIssues() {
-  return Promise.resolve([
-    {
-      title: 'Need some help, please',
-      number: '123',
-      link: 'https://github.com/algolia/instantsearch.js/issues/1260',
-      daysSinceLastUpdate: 120,
-    },
-    {
-      title: 'Need some more help, please',
-      number: '124',
-      link: 'https://github.com/algolia/instantsearch.js/issues/1260',
-      daysSinceLastUpdate: 20,
-    },
-    {
-      title: 'Need some help, again',
-      number: '123',
-      link: 'https://github.com/algolia/instantsearch.js/issues/1260',
-      daysSinceLastUpdate: 1,
-    },
-  ]);
-}
+import gh from '../gh.js';
+// function getOldIssues() {
+//   return Promise.resolve([
+//     {
+//       title: 'Need some help, please',
+//       number: '123',
+//       link: 'https://github.com/algolia/instantsearch.js/issues/1260',
+//       daysSinceLastUpdate: 120,
+//     },
+//     {
+//       title: 'Need some more help, please',
+//       number: '124',
+//       link: 'https://github.com/algolia/instantsearch.js/issues/1260',
+//       daysSinceLastUpdate: 20,
+//     },
+//     {
+//       title: 'Need some help, again',
+//       number: '123',
+//       link: 'https://github.com/algolia/instantsearch.js/issues/1260',
+//       daysSinceLastUpdate: 1,
+//     },
+//   ]);
+// }
 
 export default class OldIssues extends Component {
   constructor(props) {
@@ -37,7 +37,7 @@ export default class OldIssues extends Component {
   componentWillMount() {
     // get data
     // set next step for promise
-    getOldIssues().then(data => {
+    gh.getOldIssues().then(data => {
       this.data = data;
       this.setState(() => ({ isDataLoaded: true }));
     });
