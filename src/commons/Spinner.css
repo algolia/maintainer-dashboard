@@ -1,0 +1,10 @@
+.spinner-wrapper {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.spinner-img {
+  display: block;
+  height: 20px;
+}
