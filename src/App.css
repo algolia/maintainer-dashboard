@@ -34,12 +34,29 @@
   text-align: left;
   border: 1px solid white;
   margin: 20px;
+}
+
+.dashboard-header {
+   display: flex;
+   height: 30px;
+   width: 100%;
+   background: white;
+   color: black;
+   font-weight: bold;
+   align-items: center;
+}
+
+.dashboard-lines {
+  padding: 0;
+  margin: 0;
+  height: calc(100% - 30px);
   overflow: scroll;
 }
 
 .dashboard-line {
   display: flex;
   line-height: 150%;
+  margin: 8px;
 }
 
 .dashboard-line > * {

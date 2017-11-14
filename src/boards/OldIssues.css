@@ -1,0 +1,17 @@
+.last-updated {
+  display: inline-flex;
+  background: gray;
+  margin: 3px;
+  border-radius: 3px;
+  padding: 2px;
+}
+
+.last-updated.fresh {
+  background: green;
+}
+.last-updated.aged {
+  background: yellow;
+}
+.last-updated.rotten {
+  background: red;
+}

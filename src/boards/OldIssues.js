@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Rendering from './OldIssuesRendering.js';
 import Spinner from '../commons/Spinner.js';
 
-import {getOldIssues} from '../data.js';
+import { getOldIssues } from '../data.js';
 
 export default class OldIssues extends Component {
   constructor(props) {
@@ -21,9 +21,16 @@ export default class OldIssues extends Component {
     });
   }
   render() {
-    const content = this.state.isDataLoaded
-      ? <Rendering data={this.data}/>
-      : <Spinner/>;
-    return <div className="dashboard-board">{content}</div>;
+    const content = this.state.isDataLoaded ? (
+      <Rendering data={this.data} />
+    ) : (
+      <Spinner />
+    );
+    return (
+      <div className="dashboard-board">
+        <div className="dashboard-header">Oldest issues</div>
+        {content}
+      </div>
+    );
   }
 }
