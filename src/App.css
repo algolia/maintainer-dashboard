@@ -45,11 +45,3 @@
 .dashboard-line > * {
   align-self: center;
 }
-
-.last-updated {
-  display: inline-flex;
-  background: gray;
-  margin: 3px;
-  border-radius: 3px;
-  padding: 2px;
-}
