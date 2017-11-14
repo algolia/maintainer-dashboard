@@ -1,7 +1,5 @@
 import React from 'react';
 
-import './OldIssues.css';
-
 export default function MostLoved({ data }) {
   return (
     <ul className="dashboard-lines">{data.map(RenderMostLovedElement)}</ul>

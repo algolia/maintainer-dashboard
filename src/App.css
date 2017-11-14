@@ -83,3 +83,23 @@
   flex-grow: 1;
   margin: 0 10px;
 }
+
+.badge {
+  display: block;
+  background: gray;
+  border-radius: 3px;
+  padding: 2px;
+  width: 50px;
+  text-align: center;
+}
+
+.badge.cool {
+  background: green;
+}
+.badge.be-careful {
+  background: yellow;
+  color: black;
+}
+.badge.danger {
+  background: red;
+}
