@@ -1,19 +1,19 @@
-.last-updated {
-  display: inline-flex;
+.badge {
+  display: block;
   background: gray;
   border-radius: 3px;
   padding: 2px;
-  width: 40px;
+  width: 50px;
   text-align: center;
 }
 
-.last-updated.fresh {
+.badge.cool {
   background: green;
 }
-.last-updated.aged {
+.badge.be-careful {
   background: yellow;
   color: black;
 }
-.last-updated.rotten {
+.badge.danger {
   background: red;
 }
