@@ -8,32 +8,24 @@ export default function MostLoved({ data }) {
   );
 }
 
-function RenderMostLovedElement({ title, number, link, hearts }) {
-  let howPassionate;
-  let passionContent;
-  switch (true) {
-    case hearts < 5:
-      howPassionate = 'meh';
-      passionContent = '💙';
-      break;
-    case hearts < 30:
-      howPassionate = 'notbad';
-      passionContent = '💚';
-      break;
-    default:
-      howPassionate = 'popular';
-      passionContent = '❤️';
-      break;
+function RenderMostLovedElement({ title, number, link, upvotes }) {
+  let flagColor;
+  if (upvotes < 5) {
+    flagColor = 'cool';
+  } else if (upvotes < 30) {
+    flagColor = 'be-careful';
+  } else {
+    flagColor = 'danger';
   }
 
-  const badgeCssClass = `most-loved ${howPassionate}`;
+  const badgeCssClass = `badge ${flagColor}`;
   return (
     <li className="dashboard-line" key={title}>
       <span>{number}</span>
       <a href={link} className="title">
         {title}
       </a>
-      <span className={badgeCssClass}>{passionContent}</span>
+      <span className={badgeCssClass}>{upvotes}</span>
     </li>
   );
 }

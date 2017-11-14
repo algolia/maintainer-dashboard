@@ -7,19 +7,16 @@ export default function({ data }) {
 }
 
 function renderElement({ title, number, link, daysSinceLastUpdate }) {
-  let howOld;
-  switch (true) {
-    case daysSinceLastUpdate < 5:
-      howOld = 'fresh';
-      break;
-    case daysSinceLastUpdate < 30:
-      howOld = 'aged';
-      break;
-    default:
-      howOld = 'rotten';
-      break;
+  let flagColor;
+  if (daysSinceLastUpdate < 5) {
+    flagColor = 'cool';
+  } else if (daysSinceLastUpdate < 30) {
+    flagColor = 'be-careful';
+  } else {
+    flagColor = 'danger';
   }
-  const badgeCssClass = `last-updated ${howOld}`;
+
+  const badgeCssClass = `last-updated badge ${flagColor}`;
   return (
     <li className="dashboard-line" key={title}>
       <span>{number}</span>
