@@ -51,7 +51,7 @@ export default class OldIssues extends Component {
     );
     return (
       <div className="dashboard-board">
-        <Header title="Oldest issues" />
+        <Header title="Oldest open issues (days)" />
         {content}
       </div>
     );

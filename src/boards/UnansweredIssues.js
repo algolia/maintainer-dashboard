@@ -49,7 +49,7 @@ export default class UnansweredIssues extends Component {
     );
     return (
       <div className="dashboard-board">
-        <Header title="Unanswered user messages" />
+        <Header title="Unanswered user messages (days)" />
         {content}
       </div>
     );

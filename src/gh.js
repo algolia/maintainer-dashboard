@@ -135,10 +135,21 @@ const data = {
 
             return true;
           })
-          .sort(
-            (issueA, issueB) =>
-              issueB.daysSinceLastAnswer - issueA.daysSinceLastAnswer
-          )
+          .sort((issueA, issueB) => {
+            if (issueA.nbComments === 0 && issueB.nbComments === 0) {
+              return issueB.daysSinceLastAnswer - issueA.daysSinceLastAnswer;
+            }
+
+            if (issueA.nbComments === 0) {
+              return -1;
+            }
+
+            if (issueB.nbComments === 0) {
+              return 1;
+            }
+
+            return issueB.daysSinceLastAnswer - issueA.daysSinceLastAnswer;
+          })
       );
   },
 };
