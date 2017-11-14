@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
 
-import Rendering from './OldIssuesRendering.js';
+import Rendering from './MostLovedRendering.js';
 import Spinner from '../commons/Spinner.js';
 
-// import { getOldIssues } from '../data.js';
-function getOldIssues() {
+// import { getLovedIssues } from '../data.js';
+function getLovedIssues() {
   return Promise.resolve([
     {
       title: 'Need some help, please',
       number: '123',
       link: 'https://github.com/algolia/instantsearch.js/issues/1260',
-      days: 120,
+      hearts: 120,
     },
     {
       title: 'Need some more help, please',
       number: '124',
       link: 'https://github.com/algolia/instantsearch.js/issues/1260',
-      days: 20,
+      hearts: 20,
     },
     {
       title: 'Need some help, again',
       number: '123',
       link: 'https://github.com/algolia/instantsearch.js/issues/1260',
-      days: 1,
+      hearts: 1,
     },
   ]);
 }
 
-export default class OldIssues extends Component {
+export default class MostLoved extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,7 +37,7 @@ export default class OldIssues extends Component {
   componentWillMount() {
     // get data
     // set next step for promise
-    getOldIssues().then(data => {
+    getLovedIssues().then(data => {
       this.data = data;
       this.setState(() => ({ isDataLoaded: true }));
     });
@@ -50,7 +50,7 @@ export default class OldIssues extends Component {
     );
     return (
       <div className="dashboard-board">
-        <div className="dashboard-header">Oldest issues</div>
+        <div className="dashboard-header">Most requested issues</div>
         {content}
       </div>
     );

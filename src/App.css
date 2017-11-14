@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  color: white;
 }
 
 .App-header {
@@ -30,26 +31,56 @@
 .dashboard-board {
   align-self: flex-start;
   height: 500px;
-  min-width: 500px;
+  width: 100%;
+  max-width: calc(33vw - 62px);
   text-align: left;
   border: 1px solid white;
   margin: 20px;
+}
+
+@media (max-width: 1200px) {
+  .dashboard-board {
+    max-width: calc(50vw - 42px);
+    margin: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-board {
+    max-width: calc(100vw - 22px);
+    margin: 20px;
+  }
+}
+
+
+.dashboard-header {
+   display: flex;
+   height: 30px;
+   width: 100%;
+   background: white;
+   color: black;
+   font-weight: bold;
+   align-items: center;
+}
+
+.dashboard-lines {
+  padding: 0;
+  margin: 0;
+  height: calc(100% - 30px);
   overflow: scroll;
 }
 
 .dashboard-line {
   display: flex;
   line-height: 150%;
+  margin: 8px;
 }
 
 .dashboard-line > * {
   align-self: center;
 }
 
-.last-updated {
-  display: inline-flex;
-  background: gray;
-  margin: 3px;
-  border-radius: 3px;
-  padding: 2px;
+.dashboard-line > .title {
+  flex-grow: 1;
+  margin: 0 10px;
 }
