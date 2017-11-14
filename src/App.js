@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import OldIssues from './boards/OldIssues.js';
+import MostLoved from './boards/MostLoved.js';
 
 class App extends Component {
   render() {
@@ -11,7 +12,8 @@ class App extends Component {
           <h1 className="App-title">Maintainer dashboard for InstantSearch.js</h1>
         </header>
         <div className="dashboard-container">
-          <OldIssues/> 
+          <OldIssues /> 
+          <MostLoved />
         </div>
       </div>
     );

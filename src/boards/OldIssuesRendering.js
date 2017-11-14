@@ -9,10 +9,10 @@ export default function({ data }) {
 function renderElement({ title, number, link, days }) {
   let howOld;
   switch (true) {
-    case number < 5:
+    case days < 5:
       howOld = 'fresh';
       break;
-    case number < 30:
+    case days < 30:
       howOld = 'aged';
       break;
     default:
@@ -22,6 +22,7 @@ function renderElement({ title, number, link, days }) {
   const badgeCssClass = `last-updated ${howOld}`;
   return (
     <li className="dashboard-line" key={title}>
+      <span>{number}</span>
       <a href={link}>{title}</a>
       <span className={badgeCssClass}>{days}</span>
     </li>
