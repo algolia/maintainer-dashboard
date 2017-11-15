@@ -4,7 +4,6 @@ import Rendering from './UnansweredIssuesRendering.js';
 import Spinner from '../commons/Spinner.js';
 import Header from './Header.js';
 
-// import gh from '../gh.js';
 function getLastAnswered() {
   return Promise.resolve([
     {

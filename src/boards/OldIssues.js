@@ -4,7 +4,6 @@ import Rendering from './OldIssuesRendering.js';
 import Spinner from '../commons/Spinner.js';
 import Header from './Header.js';
 
-import gh from '../gh.js';
 // function getOldIssues() {
 //   return Promise.resolve([
 //     {
@@ -34,11 +33,12 @@ export default class OldIssues extends Component {
     this.state = {
       isDataLoaded: false,
     };
+    this.gh = props.gh;
   }
   componentWillMount() {
     // get data
     // set next step for promise
-    gh.getOldIssues().then(data => {
+    this.gh.getOldIssues().then(data => {
       this.data = data;
       this.setState(() => ({ isDataLoaded: true }));
     });

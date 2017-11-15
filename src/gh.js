@@ -1,17 +1,19 @@
-const accesToken = process.env.REACT_APP_GH_TOKEN;
 const concurrency = 20;
 const axios = require('axios');
 const moment = require('moment');
-const gh = axios.create({
-  baseURL: 'https://api.github.com',
-  params: {
-    access_token: accesToken, // eslint-disable-line camelcase
-  },
-});
 const parseLinkHeader = require('parse-link-header');
-const pMap = require('p-map');
+const pMap = require('./pmap.js');
 
-const data = {
+export default class GithubDataLayer {
+  constructor(token) {
+    this.gh = axios.create({
+      baseURL: 'https://api.github.com',
+      params: {
+        access_token: token, // eslint-disable-line camelcase
+      },
+    });
+  }
+
   _formatIssue(issue) {
     return {
       title: issue.title,
@@ -22,9 +24,10 @@ const data = {
       daysSinceLastUpdate: moment().diff(moment(issue.updated_at), 'days'),
       upvotes: issue.upvotes,
     };
-  },
+  }
+
   getUpvotesForIssue(number) {
-    return gh
+    return this.gh
       .get(`/repos/algolia/instantsearch.js/issues/${number}/reactions`, {
         headers: {
           accept: 'application/vnd.github.squirrel-girl-preview',
@@ -42,10 +45,11 @@ const data = {
           return accumulatedUpVotesAndHearts + 1;
         }, 0)
       );
-  },
+  }
+
   async getAllIssues(userParams = {}) {
     const getIssuesForPage = page =>
-      gh.get('/repos/algolia/instantsearch.js/issues', {
+      this.gh.get('/repos/algolia/instantsearch.js/issues', {
         params: {
           ...userParams,
           page,
@@ -80,13 +84,15 @@ const data = {
         issue => issue.hasOwnProperty('pull_request') === false // PR are issues
       )
     );
-  },
+  }
+
   getOldIssues() {
     return this.getAllIssues({
       direction: 'asc',
       sort: 'updated',
     }).then(issues => issues.map(this._formatIssue));
-  },
+  }
+
   getLovedIssues() {
     return this.getAllIssues().then(issues =>
       issues
@@ -94,7 +100,5 @@ const data = {
         .map(this._formatIssue)
         .sort((issueA, issueB) => issueB.upvotes - issueA.upvotes)
     );
-  },
-};
-
-export default data;
+  }
+}

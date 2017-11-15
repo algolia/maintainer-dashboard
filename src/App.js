@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
-
-import OldIssues from './boards/OldIssues.js';
-import MostLoved from './boards/MostLoved.js';
-import UnansweredIssues from './boards/UnansweredIssues.js';
+import Dashboard from './boards/Dashboard.js';
+import Login from './Login.js';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { accessToken: process.env.REACT_APP_GH_TOKEN };
+  }
+
   render() {
+    const main = this.state.accessToken ? (
+      <Dashboard token={this.state.accessToken} />
+    ) : (
+      <Login
+        onAccessToken={token => this.setState(() => ({ accessToken: token }))}
+      />
+    );
     return (
       <div className="App">
         <header className="App-header">
@@ -14,11 +24,7 @@ class App extends Component {
             Maintainer dashboard for InstantSearch.js
           </h1>
         </header>
-        <div className="dashboard-container">
-          <OldIssues />
-          <MostLoved />
-          <UnansweredIssues />
-        </div>
+        {main}
       </div>
     );
   }
