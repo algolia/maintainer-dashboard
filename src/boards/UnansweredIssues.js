@@ -4,28 +4,28 @@ import Rendering from './UnansweredIssuesRendering.js';
 import Spinner from '../commons/Spinner.js';
 import Header from './Header.js';
 
-function getLastAnswered() {
-  return Promise.resolve([
-    {
-      title: 'Need some help, please',
-      number: '123',
-      link: 'https://github.com/algolia/instantsearch.js/issues/1260',
-      daysSinceLastAnswer: 120,
-    },
-    {
-      title: 'Need some more help, please',
-      number: '124',
-      link: 'https://github.com/algolia/instantsearch.js/issues/1260',
-      daysSinceLastAnswer: 20,
-    },
-    {
-      title: 'Need some help, again',
-      number: '123',
-      link: 'https://github.com/algolia/instantsearch.js/issues/1260',
-      daysSinceLastAnswer: 1,
-    },
-  ]);
-}
+// function getLastAnswered() {
+//   return Promise.resolve([
+//     {
+//       title: 'Need some help, please',
+//       number: '123',
+//       link: 'https://github.com/algolia/instantsearch.js/issues/1260',
+//       daysSinceLastAnswer: 120,
+//     },
+//     {
+//       title: 'Need some more help, please',
+//       number: '124',
+//       link: 'https://github.com/algolia/instantsearch.js/issues/1260',
+//       daysSinceLastAnswer: 20,
+//     },
+//     {
+//       title: 'Need some help, again',
+//       number: '123',
+//       link: 'https://github.com/algolia/instantsearch.js/issues/1260',
+//       daysSinceLastAnswer: 1,
+//     },
+//   ]);
+// }
 
 export default class UnansweredIssues extends Component {
   constructor(props) {
@@ -33,13 +33,16 @@ export default class UnansweredIssues extends Component {
     this.state = {
       isDataLoaded: false,
     };
+    this.gh = props.gh;
   }
+
   componentWillMount() {
-    getLastAnswered().then(data => {
+    this.gh.getUnansweredIssues().then(data => {
       this.data = data;
       this.setState(() => ({ isDataLoaded: true }));
     });
   }
+
   render() {
     const content = this.state.isDataLoaded ? (
       <Rendering data={this.data} />
@@ -48,7 +51,7 @@ export default class UnansweredIssues extends Component {
     );
     return (
       <div className="dashboard-board">
-        <Header title="Unanswered user messages" />
+        <Header title="Unanswered user messages (days)" />
         {content}
       </div>
     );

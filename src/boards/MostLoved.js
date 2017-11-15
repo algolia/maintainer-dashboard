@@ -51,7 +51,7 @@ export default class MostLoved extends Component {
     );
     return (
       <div className="dashboard-board">
-        <Header title="Most requested issues" />
+        <Header title="Most requested issues (upvotes)" />
         {content}
       </div>
     );
