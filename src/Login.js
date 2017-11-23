@@ -7,7 +7,7 @@
 // });
 
 import React from 'react';
-// import netlify from 'netlify-auth-providers';
+import netlify from 'netlify-auth-providers';
 
 export default function Login({ onAccessToken }) {
   return (
@@ -16,7 +16,7 @@ export default function Login({ onAccessToken }) {
 }
 
 function onClick(cb) {
-  const authenticator = new netlify.default({});
+  const authenticator = new netlify({}); // eslint-ignore
   authenticator.authenticate(
     { provider: 'github', scope: 'user' },
     (err, data) => {
