@@ -7,11 +7,11 @@
 // });
 
 import React from 'react';
-import netlify from 'netlify-auth-providers';
+// import netlify from 'netlify-auth-providers';
 
 export default function Login({ onAccessToken }) {
   return (
-    <div onClick={() => onClick(onAccessToken)}>log in with your GitHub account</div>
+    <button onClick={() => onClick(onAccessToken)}>Log in with your GitHub account</button>
   );
 }
 
