@@ -43,6 +43,14 @@ export default class MostLoved extends Component {
       this.setState(() => ({ isDataLoaded: true }));
     });
   }
+  componentWillReceiveProps(nextP) {
+    this.setState(() => ({ isDataLoaded: false }));
+    this.gh = nextP.gh;
+    this.gh.getLovedIssues().then(data => {
+      this.data = data;
+      this.setState(() => ({ isDataLoaded: true }));
+    });
+  }
   render() {
     const content = this.state.isDataLoaded ? (
       <Rendering data={this.data} />

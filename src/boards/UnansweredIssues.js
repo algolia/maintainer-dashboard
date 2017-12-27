@@ -43,6 +43,15 @@ export default class UnansweredIssues extends Component {
     });
   }
 
+  componentWillReceiveProps(nextP) {
+    this.setState(() => ({ isDataLoaded: false }));
+    this.gh = nextP.gh;
+    this.gh.getUnansweredIssues().then(data => {
+      this.data = data;
+      this.setState(() => ({ isDataLoaded: true }));
+    });
+  }
+
   render() {
     const content = this.state.isDataLoaded ? (
       <Rendering data={this.data} />

@@ -9,8 +9,14 @@ export default class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gh: new GithubDataLayer(props.token),
+      gh: new GithubDataLayer(props.token, props.project),
     };
+  }
+
+  componentWillReceiveProps(nextP) {
+    this.setState(() => ({
+      gh: new GithubDataLayer(nextP.token, nextP.project),
+    }));
   }
 
   render() {

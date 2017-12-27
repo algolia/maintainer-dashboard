@@ -2,35 +2,29 @@ const axios = require('axios');
 const moment = require('moment');
 const parseLinkHeader = require('parse-link-header');
 const pMap = require('./pmap.js');
+const projects = require('./data/projects.js').default;
 
-const team = [
-  'bobylito',
-  'iam4x',
-  'Haroenv',
-  'vvo',
-  'marielaures',
-  'samouss',
-  'mthuret',
-  'ronanlevesque',
-];
+const defaultProject = projects['InstantSearch.js'];
 
 export default class GithubDataLayer {
-  constructor(token) {
+  constructor(token, project = defaultProject) {
     this.gh = axios.create({
       baseURL: 'https://api.github.com',
       params: {
         access_token: token, // eslint-disable-line camelcase
       },
     });
+
+    this.project = project;
   }
 
   _formatIssue(issue) {
     return {
       title: issue.title,
       number: issue.number,
-      link: `https://github.com/algolia/instantsearch.js/issues/${
-        issue.number
-      }`,
+      link: `https://github.com/${this.project.userOrOrg}/${
+        this.project.name
+      }/issues/${issue.number}`,
       daysSinceCreation: moment().diff(moment(issue.created_at), 'days'),
       upvotes: issue.reactions['+1'] + issue.reactions.heart,
     };
@@ -38,11 +32,16 @@ export default class GithubDataLayer {
 
   getUpvotesForIssue(number) {
     return this.gh
-      .get(`/repos/algolia/instantsearch.js/issues/${number}/reactions`, {
-        headers: {
-          accept: 'application/vnd.github.squirrel-girl-preview',
-        },
-      })
+      .get(
+        `/repos/${this.project.userOrOrg}/${this.project.name}/issues/${
+          number
+        }/reactions`,
+        {
+          headers: {
+            accept: 'application/vnd.github.squirrel-girl-preview',
+          },
+        }
+      )
       .then(({ data: reactions }) =>
         reactions.reduce((accumulatedUpVotesAndHearts, currentReaction) => {
           if (
@@ -59,16 +58,19 @@ export default class GithubDataLayer {
 
   async getAllIssues({ params: userParams = {}, maxPage = Infinity } = {}) {
     const getIssuesForPage = page =>
-      this.gh.get('/repos/algolia/instantsearch.js/issues', {
-        params: {
-          ...userParams,
-          page,
-          per_page: 30, // eslint-disable-line camelcase
-        },
-        headers: {
-          accept: 'application/vnd.github.squirrel-girl-preview',
-        },
-      });
+      this.gh.get(
+        `/repos/${this.project.userOrOrg}/${this.project.name}/issues`,
+        {
+          params: {
+            ...userParams,
+            page,
+            per_page: 30, // eslint-disable-line camelcase
+          },
+          headers: {
+            accept: 'application/vnd.github.squirrel-girl-preview',
+          },
+        }
+      );
 
     const allIssues = [];
     let page = 0;
@@ -81,7 +83,7 @@ export default class GithubDataLayer {
       );
       const parsedLinkHeader = parseLinkHeader(headers.link);
       allIssues.push(...issuesForCurrentPage);
-      hasMoreIssues = parsedLinkHeader.next !== undefined;
+      hasMoreIssues = parsedLinkHeader && parsedLinkHeader.next !== undefined;
     }
 
     return allIssues.filter(
@@ -95,13 +97,13 @@ export default class GithubDataLayer {
         direction: 'asc',
         sort: 'created',
       },
-    }).then(issues => issues.map(this._formatIssue));
+    }).then(issues => issues.map(i => this._formatIssue(i)));
   }
 
   getLovedIssues() {
     return this.getAllIssues().then(issues =>
       issues
-        .map(this._formatIssue)
+        .map(i => this._formatIssue(i))
         .filter(issue => issue.upvotes > 0)
         .sort((issueA, issueB) => issueB.upvotes - issueA.upvotes)
     );
@@ -109,7 +111,11 @@ export default class GithubDataLayer {
 
   getCommentsForIssue(number) {
     return this.gh
-      .get(`/repos/algolia/instantsearch.js/issues/${number}/comments`)
+      .get(
+        `/repos/${this.project.userOrOrg}/${this.project.name}/issues/${
+          number
+        }/comments`
+      )
       .then(({ data: comments }) => comments);
   }
 
@@ -157,7 +163,7 @@ export default class GithubDataLayer {
             };
           })
           .filter(issue => {
-            if (team.includes(issue.lastCommenter) === true) {
+            if (this.project.team.includes(issue.lastCommenter) === true) {
               return false;
             }
 
