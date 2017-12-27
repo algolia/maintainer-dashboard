@@ -8,6 +8,7 @@
     "netlify-auth-providers": "^1.0.0-alpha5",
     "p-map": "1.2.0",
     "parse-link-header": "1.0.1",
+    "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-scripts": "1.0.17"

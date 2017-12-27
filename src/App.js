@@ -6,7 +6,10 @@ import Login from './Login.js';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { accessToken: process.env.REACT_APP_GH_TOKEN };
+    const storedGHToken = window.localStorage.getItem('GH_TOKEN');
+    this.state = {
+      accessToken: process.env.REACT_APP_GH_TOKEN || storedGHToken,
+    };
   }
 
   render() {
