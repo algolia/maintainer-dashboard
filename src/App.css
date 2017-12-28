@@ -16,49 +16,12 @@
   font-size: 1.5em;
 }
 
+.App-title select {
+  font: inherit;
+}
+
 .App-intro {
   font-size: large;
-}
-
-.dashboard-container {
-  background: #fff;
-  display: flex;
-  flex-wrap: wrap;
-  min-height: calc(100vh - 70px);
-  justify-content: center;
-}
-
-.dashboard-board {
-  align-self: flex-start;
-  height: 500px;
-  width: 100%;
-  max-width: calc(33vw - 62px);
-  text-align: left;
-  border: 1px solid #eee;
-  margin: 20px;
-}
-
-@media (max-width: 1200px) {
-  .dashboard-board {
-    max-width: calc(50vw - 42px);
-    margin: 20px;
-  }
-}
-
-@media (max-width: 600px) {
-  .dashboard-board {
-    max-width: calc(100vw - 22px);
-    margin: 20px;
-  }
-}
-
-.dashboard-header {
-   display: flex;
-   height: 30px;
-   width: 100%;
-   background-color: #f2f2f2;
-   font-weight: bold;
-   align-items: center;
 }
 
 .dashboard-lines {
