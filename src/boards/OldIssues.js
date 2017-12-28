@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Rendering from './OldIssuesRendering.js';
 import Spinner from '../commons/Spinner.js';
-import Header from './Header.js';
+import Board from '../commons/Board.js';
 
 export default class OldIssues extends Component {
   constructor(props) {
@@ -34,11 +34,6 @@ export default class OldIssues extends Component {
     ) : (
       <Spinner />
     );
-    return (
-      <div className="dashboard-board">
-        <Header title="Oldest open issues (days)" />
-        {content}
-      </div>
-    );
+    return <Board title="Oldest open issues (days)">{content}</Board>;
   }
 }

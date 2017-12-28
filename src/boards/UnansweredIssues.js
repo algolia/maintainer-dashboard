@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Rendering from './UnansweredIssuesRendering.js';
 import Spinner from '../commons/Spinner.js';
-import Header from './Header.js';
+import Board from '../commons/Board.js';
 
 // function getLastAnswered() {
 //   return Promise.resolve([
@@ -58,11 +58,6 @@ export default class UnansweredIssues extends Component {
     ) : (
       <Spinner />
     );
-    return (
-      <div className="dashboard-board">
-        <Header title="Unanswered user messages (days)" />
-        {content}
-      </div>
-    );
+    return <Board title="Unanswered user messages (days)">{content}</Board>;
   }
 }
