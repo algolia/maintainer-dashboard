@@ -31,6 +31,7 @@ class App extends Component {
         onAccessToken={token => this.setState(() => ({ accessToken: token }))}
       />
     );
+    updateTitle(this.state.selectedProject);
     return (
       <div className="App">
         <header className="App-header">
@@ -53,6 +54,10 @@ class App extends Component {
       </div>
     );
   }
+}
+
+function updateTitle(project) {
+  document.title = `MD: ${project}`;
 }
 
 export default App;
