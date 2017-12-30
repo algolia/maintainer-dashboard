@@ -15,11 +15,15 @@ Login.propTypes = {
 };
 
 function onClick(cb) {
-  const authenticator = new Netlify({});
+  const authenticator = new Netlify({
+    // eslint-disable-next-line camelcase
+    site_id: 'maintainer-dashboard.netlify.com',
+  });
   authenticator.authenticate(
     { provider: 'github', scope: 'user' },
     (err, data) => {
-      if (err) cb(undefined);
+      // eslint-disable-next-line no-console
+      if (err) console.warn(err.err.message);
       else {
         window.localStorage.setItem('GH_TOKEN', data.token);
         cb(data.token);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Rendering from './MostLovedRendering.js';
 import Spinner from '../commons/Spinner.js';
-import Header from './Header.js';
+import Board from '../commons/Board.js';
 
 // function getLovedIssues() {
 //   return Promise.resolve([
@@ -57,11 +57,6 @@ export default class MostLoved extends Component {
     ) : (
       <Spinner />
     );
-    return (
-      <div className="dashboard-board">
-        <Header title="Most requested issues (upvotes)" />
-        {content}
-      </div>
-    );
+    return <Board title="Most requested issues (upvotes)">{content}</Board>;
   }
 }

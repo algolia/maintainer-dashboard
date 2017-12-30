@@ -56,6 +56,20 @@ export default {
       'ronanlevesque',
     ],
   },
+  'JS Client': {
+    userOrOrg: 'algolia',
+    name: 'algoliasearch-client-javascript',
+    team: [
+      'bobylito',
+      'iam4x',
+      'Haroenv',
+      'vvo',
+      'marielaures',
+      'samouss',
+      'mthuret',
+      'ronanlevesque',
+    ],
+  },
   'InstantSearch.js': {
     userOrOrg: 'algolia',
     name: 'instantsearch.js',
