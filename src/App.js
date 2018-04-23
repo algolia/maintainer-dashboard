@@ -36,7 +36,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">
-            Maintainer dashboard for
+            Maintainer dashboard for{' '}
             <select
               value={this.state.selectedProject}
               onChange={e => {
@@ -45,8 +45,7 @@ class App extends Component {
                 this.setState(() => ({ selectedProject: selectedProjectKey }));
               }}
             >
-              {' '}
-              {projectOptions}{' '}
+              {projectOptions}
             </select>
           </h1>
         </header>
