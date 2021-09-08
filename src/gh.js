@@ -10,8 +10,8 @@ export default class GithubDataLayer {
   constructor(token, project = defaultProject) {
     this.gh = axios.create({
       baseURL: 'https://api.github.com',
-      params: {
-        access_token: token, // eslint-disable-line camelcase
+      headers: {
+        Authorization: `token ${token}`,
       },
     });
 
